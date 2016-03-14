@@ -250,6 +250,24 @@ begin
   --dir_red
   --dir_green
   --dir_blue
+  
+  dir_red <= x"FF" when dir_pixel_column>=0 and dir_pixel_column <=H_RES/8 else
+				 x"FF" when dir_pixel_column>=H_RES/8 and dir_pixel_column <=H_RES/8*2 else
+				 x"FF" when dir_pixel_column>=H_RES/8*4 and dir_pixel_column <=H_RES/8*5 else
+				 x"FF" when dir_pixel_column>= H_RES/8*5  and dir_pixel_column <=H_RES/8*6 else
+				 x"00";
+				
+	dir_green <= x"FF" when dir_pixel_column>=0 and dir_pixel_column <=H_RES/8*5 else
+					 x"00";
+					
+	dir_blue <= x"FF" when dir_pixel_column>=0 and dir_pixel_column <=H_RES/8 else
+				   x"FF" when dir_pixel_column>=H_RES/4 and dir_pixel_column <=H_RES/8*3 else
+				   x"FF" when dir_pixel_column>=H_RES/2 and dir_pixel_column <=H_RES/8*5 else
+				   x"FF" when dir_pixel_column>= H_RES/8*6 and dir_pixel_column <=H_RES/8*7 else
+				   x"00";
+					
+  
+  
  
   -- koristeci signale realizovati logiku koja pise po TXT_MEM
   --char_address
